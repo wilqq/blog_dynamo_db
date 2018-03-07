@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DynamodbBlog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div>
+      <% if current_user_email %>
+        Signed as:
+        <%= current_user_email %>
+        <%= link_to 'My Posts', posts_session_path %>
+        <%= link_to 'My Comments', comments_session_path %>
+        <%= link_to 'Signout', session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'SignIn', new_session_path %>
+        <%= link_to 'Register', new_user_path %>
+      <% end %>
+    </div>
+    <%= yield %>
+  </body>
+</html>
